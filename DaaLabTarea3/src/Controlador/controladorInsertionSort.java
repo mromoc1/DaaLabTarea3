@@ -4,15 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
 
+import Insertion.Collection;
+import Insertion.InsertionSort;
 import Vista.panelInsertionSort;
 
 public class controladorInsertionSort implements ActionListener,KeyListener{
 	panelInsertionSort panel;
+	InsertionSort sort;
 	
 	public controladorInsertionSort(panelInsertionSort panel) {
 		this.panel = panel;
@@ -106,16 +110,35 @@ public class controladorInsertionSort implements ActionListener,KeyListener{
 						}
 					}
 				}
-				
-				//LLAMAMOS AL ALGORITMO DE ORDENAMIENTO PASANDOLE EL ARREGLO NO ORDENADO GENERADO ANTES
-				
+				sort = new InsertionSort();
 				this.panel.textArea.setText("Estado Actual Algoritmo Insertion Sort:\n"
 						+  "\n"
-						+ "Arreglo de Entrada : " + Arrays.toString(A) +/*AGREGARARREGLODEENTRADA +*/"\n"
-						+ "Arreglo de Salida : " + /*AGREGARARREGLODESALIDA +*/"\n"
-						+ "N° de Comparaciones : " + /*AGREGARNUMERODECOMPARACIONES +*/"\n"
-						+ "N° de Intercambios : "+ /*AGREGARNUMEROINTERCAMBIOS+*/"\n"
-						+ "Tiempo Transcurrido : "/*+ AGREGARNUMEROINTERCAMBIOS*/);
+						+ "Arreglo de Entrada : " + Arrays.toString(A) +"\n");
+				double tiempoInicio = 0, tiempoFinal = 0, tiempo;
+				if(panel.boxOrden.getSelectedIndex() == 0) {
+					tiempoInicio = System.currentTimeMillis();
+					
+					sort.sortArray(A);
+				
+					tiempoFinal = System.currentTimeMillis();
+					tiempo = tiempoFinal - tiempoInicio;
+					
+				}else {
+					ArrayList<Collection> collection= new ArrayList<Collection>();
+					for(int i = 0; i<A.length; i++) {
+						collection.add(new Collection(A[i]));
+					}
+					tiempoInicio = System.currentTimeMillis();
+					sort.sortCollection(collection);
+					tiempoFinal = System.currentTimeMillis();
+					tiempo = tiempoFinal - tiempoInicio;
+					
+				}
+				
+				this.panel.textArea.append("Arreglo de Salida : " + Arrays.toString(A) + "\n"
+						+ "N° de Comparaciones : " + sort.getNumeroComparaciones() + "\n"
+						+ "N° de Intercambios : "+ sort.getNumeroIntercambios() + "\n"
+						+ "Tiempo Transcurrido : "+ tiempo);
 				
 			}
 		}
