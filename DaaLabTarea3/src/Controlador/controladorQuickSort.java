@@ -9,11 +9,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
 
+import Quick.QuickSort;
 import Vista.panelQuickSort;
 
 
 public class controladorQuickSort implements ActionListener,KeyListener{
 	panelQuickSort panel;
+	QuickSort sort;
 	
 	public controladorQuickSort(panelQuickSort panel) {
 		this.panel = panel;
@@ -106,15 +108,22 @@ public class controladorQuickSort implements ActionListener,KeyListener{
 				}
 			}
 			
-			//LLAMAMOS AL ALGORITMO DE ORDENAMIENTO PASANDOLE EL ARREGLO NO ORDENADO GENERADO ANTES
-			
-			this.panel.textArea.setText("Estado Actual Algoritmo Insertion Sort:\n"
+			sort = new QuickSort(A);
+			this.panel.textArea.setText("Estado Actual Algoritmo Quick Sort:\n"
 					+  "\n"
-					+ "Arreglo de Entrada : " + Arrays.toString(A) +/*AGREGARARREGLODEENTRADA +*/"\n"
-					+ "Arreglo de Salida : " + /*AGREGARARREGLODESALIDA +*/"\n"
-					+ "N° de Comparaciones : " + /*AGREGARNUMERODECOMPARACIONES +*/"\n"
-					+ "N° de Intercambios : "+ /*AGREGARNUMEROINTERCAMBIOS+*/"\n"
-					+ "Tiempo Transcurrido : "/*+ AGREGARNUMEROINTERCAMBIOS*/);
+					+ "Arreglo de Entrada : " + Arrays.toString(A) +"\n");
+			
+			double tiempoInicio = 0, tiempoFinal = 0, tiempo;
+			tiempoInicio = System.currentTimeMillis();
+			sort.quickSort(A, 0, A.length-1);
+			tiempoFinal = System.currentTimeMillis();
+			tiempo = tiempoFinal - tiempoInicio;
+			
+			
+			this.panel.textArea.append("Arreglo de Salida : " + Arrays.toString(A) + "\n"
+					+ "N° de Comparaciones : " + sort.getNumeroComparaciones() + "\n"
+					+ "N° de Intercambios : "+ sort.getNumeroIntercambios() + "\n"
+					+ "Tiempo Transcurrido : "+ tiempo);
 			
 		}
 	}
