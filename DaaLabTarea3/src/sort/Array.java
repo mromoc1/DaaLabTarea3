@@ -3,10 +3,18 @@ package sort;
 import java.util.Arrays;
 
 public class Array {
-	public static void sort( int[] arr ) {
+	long tiempo = 0;
+	public void sort( int[] arr ) {
+		long inicio = System.currentTimeMillis();
 		Arrays.sort(arr);
+		long fin = System.currentTimeMillis();
+		tiempo = fin - inicio;
 	}
-	public static void printArray( int[] arr) {
+	public void printArray( int[] arr) {
 		System.out.printf("%s", Arrays.toString(arr));
+	}
+	/*tiempo*/
+	public long getTiempo() {
+		return tiempo;
 	}
 }

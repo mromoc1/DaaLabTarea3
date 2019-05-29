@@ -1,7 +1,8 @@
 package main;
 
 import insertionSort.InsertionSort;
-import modelo.Collection;
+import modelo.Persona;
+
 import java.util.ArrayList;
 
 public class Main {
@@ -13,13 +14,11 @@ public class Main {
 		insertionSort.sortArray(arreglo);  //ordenar  array
 		insertionSort.printArray(arreglo); //imprimir array
 		//test collection
-		ArrayList<Collection> collection= new ArrayList<Collection>(); 
-		collection.add(new Collection(12)); 
-		collection.add(new Collection(11));
-		collection.add(new Collection(13));
-		collection.add(new Collection(5));
-		collection.add(new Collection(6));
+		ArrayList<Persona> collection= new ArrayList<Persona>(); 
+		collection.add(new Persona("Marcelo")); 
+		collection.add(new Persona("Diego"));
+		collection.add(new Persona("Claudio"));
 		insertionSort.sortCollection(collection); //ordenar  collection
-		insertionSort.printCollection(collection);//imprimir collection
+		System.out.println(insertionSort.printCollection(collection));//imprimir collection
 	} 
 }

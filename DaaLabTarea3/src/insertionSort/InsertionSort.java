@@ -1,12 +1,12 @@
 package insertionSort;
 
 import java.util.ArrayList;
-import modelo.Collection;
+import modelo.Persona;
 
 public class InsertionSort{
-	int comparaciones = 0;
-	int intercambios = 0;
-	long tiempo = 0;
+	private int comparaciones = 0;
+	private int intercambios = 0;
+	private long tiempo = 0;
 	/* insertion sort para Arrays*/
 	public void sortArray( int arreglo[] ){ 
 		int n = arreglo.length; 
@@ -52,12 +52,12 @@ public class InsertionSort{
 		return tiempo;
 	}
 	/* insertion sort para Collections*/
-	public void sortCollection(ArrayList<Collection> collection) {
+	public void sortCollection(ArrayList<Persona> collection) {
 		int in, out;
 		for (out = 1; out < collection.size(); out++) {
-			Collection temp = collection.get(out);
+			Persona temp = collection.get(out);
 			in = out;
-			while (in > 0 && collection.get(in - 1).getValor() > temp.getValor()) {
+			while (in > 0 && collection.get(in - 1).getNombre().compareTo(temp.getNombre())>0 ) {
 				collection.set(in,collection.get(in - 1));
 				--in;
 			}
@@ -65,10 +65,15 @@ public class InsertionSort{
 		}
 	}
 	/* imprime collection */
-	public void printCollection(ArrayList<Collection> collection){ 
-		System.out.println("Collection: ");
-		for (Collection e : collection) {
-			System.out.println(e.getValor());
+	public String printCollection( ArrayList<Persona> A ) {
+		String s = " ";
+		int posicion = 0;
+		System.out.println(A.size());
+		for (Persona dato : A) {
+			s = s.concat(dato.getNombre());
+			posicion++;
+			if( posicion < A.size() ) s = s.concat(", ");
 		}
+		return s;
 	}
 }
