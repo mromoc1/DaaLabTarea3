@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class panelInsertionSort extends JPanel {
+public class panelArraySort extends JPanel {
 	private Font f = new Font("Century Gothic", Font.PLAIN, 16);
 	
 	public JTextField textField;
@@ -30,7 +30,7 @@ public class panelInsertionSort extends JPanel {
 	
 
 	
-	public panelInsertionSort() {
+	public panelArraySort() {
 		setLayout(new BorderLayout(0, 0));
 
 		add(panelInteractivo(),BorderLayout.NORTH);
@@ -71,7 +71,6 @@ public class panelInsertionSort extends JPanel {
 		boxOrden.setBackground(Color.LIGHT_GRAY);
 		boxOrden.addItem("Desordenado");
 		boxOrden.addItem("Ordenado");
-		boxOrden.addItem("Collections");
 		panel.add(boxOrden);
 		
 		textField = new JTextField();
@@ -98,7 +97,7 @@ public class panelInsertionSort extends JPanel {
 		textArea.setFont(f);
 		textArea.setLineWrap(true);
 		textArea.setEditable(false);
-		textArea.setText("Estado Actual Algoritmo Insertion Sort:");
+		textArea.setText("Estado Actual Método Arrays.Sort:");
 		scrollPane.setViewportView(textArea);
 		textArea.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		

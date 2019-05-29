@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class panelInsertionSort extends JPanel {
+public class panelCollectionSort extends JPanel {
 	private Font f = new Font("Century Gothic", Font.PLAIN, 16);
 	
 	public JTextField textField;
@@ -28,9 +28,7 @@ public class panelInsertionSort extends JPanel {
 	private JLabel label_1;
 	private JLabel label_2;
 	
-
-	
-	public panelInsertionSort() {
+	public panelCollectionSort() {
 		setLayout(new BorderLayout(0, 0));
 
 		add(panelInteractivo(),BorderLayout.NORTH);
@@ -42,12 +40,10 @@ public class panelInsertionSort extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(0,4,0,0));
 		
-		
 		boxMagnitud = new JComboBox();
 		boxMagnitud.setFont(f);
 		boxMagnitud.setBackground(Color.LIGHT_GRAY);
-		for(int i =1;i<=5;i++)
-			boxMagnitud.addItem("Magnitud "+i);
+		boxMagnitud.addItem("Magnitud "+1);
 		
 		lblNewLabel = new JLabel("");
 		panel.add(lblNewLabel);
@@ -70,8 +66,6 @@ public class panelInsertionSort extends JPanel {
 		boxOrden.setFont(f);
 		boxOrden.setBackground(Color.LIGHT_GRAY);
 		boxOrden.addItem("Desordenado");
-		boxOrden.addItem("Ordenado");
-		boxOrden.addItem("Collections");
 		panel.add(boxOrden);
 		
 		textField = new JTextField();
@@ -98,7 +92,7 @@ public class panelInsertionSort extends JPanel {
 		textArea.setFont(f);
 		textArea.setLineWrap(true);
 		textArea.setEditable(false);
-		textArea.setText("Estado Actual Algoritmo Insertion Sort:");
+		textArea.setText("Estado Actual Método Collections.Sort:");
 		scrollPane.setViewportView(textArea);
 		textArea.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		

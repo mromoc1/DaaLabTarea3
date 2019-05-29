@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import Controlador.controladorArraySort;
+import Controlador.controladorCollectionSort;
 import Controlador.controladorInsertionSort;
 import Controlador.controladorMergeSort;
 import Controlador.controladorQuickSort;
@@ -33,6 +35,8 @@ public class Principal extends JFrame {
 		panel.addTab("Insertion Sort", null, panelInsertionSort(), null);	
 		panel.addTab("Merge Sort", null, panelMergeSort(), null);	
 		panel.addTab("Quick Sort", null, panelQuickSort(), null);		
+		panel.addTab("Array Sort", null, panelArraySort(), null);
+		panel.addTab("Collection Sort", null, panelCollectionSort(), null);
 		
 		return panel;
 	}
@@ -89,5 +93,20 @@ public class Principal extends JFrame {
 		
 	}
 	
+	public JPanel panelArraySort() {
+		panelArraySort panel = new panelArraySort();
+		controladorArraySort controlador = new controladorArraySort(panel);
+		
+		return panel;
+		
+	}
+	
+	public JPanel panelCollectionSort() {
+		panelCollectionSort panel = new panelCollectionSort();
+		controladorCollectionSort controlador = new controladorCollectionSort(panel);
+		
+		return panel;
+		
+	}
 
 }
