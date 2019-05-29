@@ -7,5 +7,4 @@ public class Main {
 		Principal ventana = new Principal();
 		ventana.setVisible(true);
 	}
-
 }
